@@ -64,10 +64,12 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
         // popular text
 
+
         SizedBox(
           height: Dimensions.height30,
         ),
         Container(
+          padding: EdgeInsets.only(bottom: Dimensions.height15),
           margin: EdgeInsets.only(left: Dimensions.width30),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -97,12 +99,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           ),
         ),
         // list of food images
-        Container(
-
-          height: 700,
-          child: ListView.builder(
+        
+          ListView.builder(
               physics: NeverScrollableScrollPhysics(),
-              // shrinkWrap: true,
+              shrinkWrap: true,
               itemCount: 10,
               itemBuilder: (context, index) {
                 return Container(
@@ -111,8 +111,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     children: [
                       //image section
                       Container(
-                        width: 120,
-                        height: 120,
+                        width: Dimensions.listImageSize,
+                        height: Dimensions.listImageSize,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(Dimensions.radius20),
                           color: Colors.white38,  
@@ -126,12 +126,59 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         
                       ),
                       // text section
+
+                      Expanded(
+                        child: Container(
+                          height: Dimensions.listTextSize,
+                          
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(Dimensions.radius20),
+                              bottomRight: Radius.circular(Dimensions.radius20),
+                            ),
+                            color: Colors.white,
+                      
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [ 
+                                BigText(text: "Nutritious fruit and meal in Chain"),
+                                SizedBox(height: Dimensions.height10,),
+                                SmallText(text: "With chineses characteristics"),
+                                SizedBox(height: Dimensions.height10,),
+                                 Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  IconAndText(
+                                      icon: Icons.circle_sharp,
+                                      iconColor: AppColor.IconColor1,
+                                      text: "Normal"),
+                                  IconAndText(
+                                      icon: Icons.location_on,
+                                      iconColor: AppColor.MainColor,
+                                      text: "1.7km"),
+                                  IconAndText(
+                                      icon: Icons.access_time_rounded,
+                                      iconColor: AppColor.IconColor1,
+                                      text: "32min"),
+                            ],
+                          ),
+                                    ],
+                            ),
+                          ),
+
+                      
+                        ),
+                      ),
                       
                     ],
                   ),
                 );
               }),
-        )
+        
       ],
     );
   }
